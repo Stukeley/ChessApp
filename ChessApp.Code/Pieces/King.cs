@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Media.Imaging;
-
-namespace ChessApp.Models
+﻿namespace ChessApp.Pieces
 {
 	internal class King : Piece
 	{

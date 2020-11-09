@@ -1,12 +1,10 @@
-﻿using System.Windows;
-using System.Windows.Media.Imaging;
-
-namespace ChessApp.Models
+﻿namespace ChessApp.Pieces
 {
 	public enum Color
 	{
 		Black, White
 	}
+
 	public class Piece
 	{
 		public BitmapImage PieceImage { get; set; }
