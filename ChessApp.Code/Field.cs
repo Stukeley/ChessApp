@@ -1,50 +1,87 @@
-﻿namespace ChessApp.Code
+﻿using ChessApp.Pieces;
+
+namespace ChessApp.Code
 {
 	public class Field
 	{
 		public string Position { get; }
+		public Piece Piece { get; private set; }
 
 		public Field(int row, int column)
 		{
 			string p1 = (row + 1).ToString();
-			string p2 = "";
-
-			switch (column % 8)
-			{
-				case 0:
-					p2 = "A";
-					break;
-
-				case 1:
-					p2 = "B";
-					break;
-
-				case 2:
-					p2 = "C";
-					break;
-
-				case 3:
-					p2 = "D";
-					break;
-
-				case 4:
-					p2 = "E";
-					break;
-
-				case 5:
-					p2 = "F";
-					break;
-
-				case 6:
-					p2 = "G";
-					break;
-
-				case 7:
-					p2 = "H";
-					break;
-			}
-
+			string p2 = (column % 8 + 65).ToString();
 			Position = p2 + p1;
+
+			SetStartPiece();
+		}
+
+		private void SetStartPiece()
+		{
+			if (Position[1] == '2')
+			{
+				Piece = new Pawn(Color.White);
+			}
+			else if (Position[1] == '7')
+			{
+				Piece = new Pawn(Color.Black);
+			}
+			else if (Position[1] == '1')
+			{
+				switch (Position[0])
+				{
+					case 'A':
+					case 'H':
+						Piece = new Rook(Color.White);
+						break;
+
+					case 'B':
+					case 'G':
+						Piece = new Knight(Color.White);
+						break;
+
+					case 'C':
+					case 'F':
+						Piece = new Bishop(Color.White);
+						break;
+
+					case 'D':
+						Piece = new Queen(Color.White);
+						break;
+
+					case 'E':
+						Piece = new King(Color.White);
+						break;
+				}
+			}
+			else if (Position[1] == '6')
+			{
+				switch (Position[0])
+				{
+					case 'A':
+					case 'H':
+						Piece = new Rook(Color.Black);
+						break;
+
+					case 'B':
+					case 'G':
+						Piece = new Knight(Color.Black);
+						break;
+
+					case 'C':
+					case 'F':
+						Piece = new Bishop(Color.Black);
+						break;
+
+					case 'D':
+						Piece = new Queen(Color.Black);
+						break;
+
+					case 'E':
+						Piece = new King(Color.Black);
+						break;
+				}
+			}
 		}
 	}
 }

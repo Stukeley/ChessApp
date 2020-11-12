@@ -1,7 +1,11 @@
-﻿namespace ChessApp.Pieces
+﻿using System;
+
+namespace ChessApp.Pieces
 {
-	internal class Pawn : Piece
+	public class Pawn : Piece
 	{
+		public bool FirstMove => false;
+
 		public Pawn(Color color) : base(color)
 		{
 			Uri uri;
